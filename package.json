@@ -1,0 +1,34 @@
+{
+  "name": "create-email-boilerplate",
+  "version": "1.0.0",
+  "description": "create email for mailer",
+  "main": "gulpfile.js",
+  "repository": "git@github.com:vbguard/create-email-boilerplate.git",
+  "author": "Viktor Bulvarenko <silken.ua@gmail.com>",
+  "license": "Apache 2.0",
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "autoprefixer": "^9.4.4",
+    "browser-sync": "^2.26.3",
+    "del": "^3.0.0",
+    "gulp": "^4.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean-css": "^4.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-inline-css": "^3.3.1",
+    "gulp-postcss": "^8.0.0",
+    "gulp-pug": "^4.0.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-replace": "^1.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-uglify": "^3.0.1",
+    "gulp-util": "^3.0.8",
+    "gulp-zip": "^4.2.0",
+    "postcss-scss": "^2.0.0"
+  },
+  "scripts": {
+    "start": "gulp",
+    "build": "gulp build",
+    "watch": "gulp watch"
+  }
+}
