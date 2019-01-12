@@ -14,13 +14,16 @@ const del = require('del');
 // this will be the base directory of files for web preview
 // since we are building `index.pug` templates (located in src/emails) to `dist` folder.
 const paths = {
+    html: {
+      dest: 'dist'
+    },
     styles: {
       src: 'src/styles/**/*.less',
-      dest: 'assets/styles/'
+      dest: 'dist/styles/'
     },
     scripts: {
       src: 'src/scripts/**/*.js',
-      dest: 'assets/scripts/'
+      dest: 'dist/scripts/'
     },
     baseDir: {
         src: './dist'
@@ -29,7 +32,7 @@ const paths = {
 
 // compile sass to css
 function compileSass() { 
-    src('./src/sass/**/*.scss')
+    return src('./src/sass/**/*.scss')
     .pipe(sass()
     .on('error', sass.logError))
     .pipe(gulp.dest('./src/css'));
@@ -37,42 +40,41 @@ function compileSass() {
 
 // build complete HTML email template
 // compile sass (compileSass task) before running build
-// task('build', ['compileSass'], function () {
-//     return src('src/emails/**/*.template.pug')
-//         .pipe(replace(new RegExp('\/sass\/(.+)\.scss', 'ig'), '/css/$1.css'))
-//         .pipe(pug())
-//         .pipe(inlineCss())
-//         .pipe(rename({dirname: ''}))
-//         .pipe(gulp.dest('dist'))
-// });
+async function build(cb) {
+    await compileSass();
+    return src('src/emails/**/*.template.pug')
+        .pipe(replace(new RegExp('\/sass\/(.+)\.scss', 'ig'), '/css/$1.css'))
+        .pipe(pug())
+        .pipe(inlineCss())
+        .pipe(rename({dirname: ''}))
+        .pipe(gulp.dest(paths.html.dest));
+    cb();
+};
 
 // browserSync task to launch preview server
 function sync(cb) {
-    cb(browserSync.init({
+    return browserSync.init({
         reloadDelay: 2000, // reload after 2s, compilation is finished (hopefully)
         server: { baseDir: paths.baseDir.src }
-    }));
-
-    // return browserSync.init({
-    //     reloadDelay: 2000, // reload after 2s, compilation is finished (hopefully)
-    //     server: { baseDir: paths.baseDir.src }
-    // });
+    });
+    cb();
 };
 
 // task to reload browserSync
-// task('reloadBrowserSync', function () {
-//     return browserSync.reload();
-// });
+function reloadBrowserSync() {
+    return browserSync.reload();
+};
 
 // watch source files for changes
 // run `build` task when anything inside `src` folder changes (except .css)
 // and reload browserSync
-// task('watch', ['build', 'sync'], function () {
-//     return watch([
-//         'src/**/*',
-//         '!src/**/*.css',
-//     ], ['build', 'reloadBrowserSync']);
-// });
+async function watchFile() {
+  await build();
+    return watch([
+        'src/**/*',
+        '!src/**/*.css',
+    ], series(build, reloadBrowserSync));
+};
 
 
  
@@ -127,4 +129,4 @@ exports.scripts = scripts;
 var build = series(clean, parallel(styles, scripts));
  
 
-exports.default = series(clean);
+exports.default = series(clean, build, watchFile, sync);
