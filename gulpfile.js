@@ -16,11 +16,15 @@ const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
 const cleanCSS = require('gulp-clean-css');
 const del = require('del');
+const autoprefixer = require('gulp-autoprefixer');
 
 // browserSync base directory
 // this will be the base directory of files for web preview
 // since we are building `index.pug` templates (located in src/emails) to `dist` folder.
 const paths = {
+  html: {
+    src: './src/html/'
+  },
   styles: {
     src: './src/styles/**/*.scss',
     dest: './dist/styles/'
@@ -51,7 +55,7 @@ function pugBuild() {
     .pipe(dest('dist'))
 };
 
-task('buildPug', series(cleanDist, styles, pugBuild));
+task('buildPug', series(cleanDist, stylesHtml, pugBuild));
 
 // browserSync task to launch preview server
 function connectToBrowser() {
@@ -61,6 +65,12 @@ function connectToBrowser() {
       baseDir: paths.baseDir.src
     }
   });
+
+
+  // A simple task to reload the page
+  function reload() {
+    browserSync.reload();
+  }
 
   // return browserSync.init({
   //     reloadDelay: 2000, // reload after 2s, compilation is finished (hopefully)
@@ -85,17 +95,20 @@ function cleanBuild() {
 /*
  * Define our tasks using plain functions
  */
-function styles() {
+function stylesHtml() {
   return src('./src/styles/**/*.scss')
     .pipe(sass({
       outputStyle: 'compressed'
     }).on('error', sass.logError))
-    .pipe(autoprefixer())
+    .pipe(autoprefixer({
+      browsers: '> 0.1%'
+    }))
     .pipe(concat('styles.css'))
     .pipe(cleanCSS({
       level: 2
     }))
-    .pipe(dest('./dist/css/'));
+    .pipe(dest('./dist/css/'))
+    .pipe(browserSync.stream());
 
 }
 
@@ -114,9 +127,14 @@ function scripts() {
  * second option name function to some action for this files
  */
 
-function watching() {
+function watchingHtml() {
+  connectToBrowser();
   watch(paths.scripts.src, scripts);
-  watch(paths.styles.src, styles);
+  watch(paths.styles.src, stylesHtml);
+  watch(paths.html.src).on('change', reload);
 };
 
-task('default', series(cleanDist, styles));
+task('html:dev', series(cleanDist, parallel(stylesHtml, scripts), watchingHtml));
+task('html:build', series(cleanBuild));
+task('mail:dev', series(cleanDist));
+task('mail:build', series(cleanBuild));
