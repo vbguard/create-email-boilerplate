@@ -33,14 +33,13 @@ const paths = {
     src: './src/scripts/**/*.js',
     dest: './dist/scripts/'
   },
+  images: {
+    src: './src/images/**/*',
+    dest: './dist/images/',
+  },
   baseDir: {
     src: './dist'
   }
-};
-
-// compile sass to css
-function compileSass() {
-
 };
 
 // build complete HTML email template
@@ -56,27 +55,6 @@ function pugBuild() {
 };
 
 task('buildPug', series(cleanDist, stylesHtml, pugBuild));
-
-// browserSync task to launch preview server
-function connectToBrowser() {
-  return browserSync.init({
-    reloadDelay: 2000, // reload after 2s, compilation is (hopefully)
-    server: {
-      baseDir: paths.baseDir.src
-    }
-  });
-
-
-  // A simple task to reload the page
-  function reload() {
-    browserSync.reload();
-  }
-
-  // return browserSync.init({
-  //     reloadDelay: 2000, // reload after 2s, compilation is finished (hopefully)
-  //     server: { baseDir: paths.baseDir.src }
-  // });
-};
 
 /*
  * Function for clean files in 'dist' and 'build' folder for new compile 
@@ -121,6 +99,39 @@ function scripts() {
     .pipe(dest(paths.scripts.dest));
 }
 
+/**************** images task ****************/
+
+const imgConfig = {
+  minOpts: {
+    optimizationLevel: 5
+  }
+};
+
+function imagesHtml() {
+  return src(path.images.src)
+    .pipe(newer(path.images.dest))
+    .pipe(imagemin(imgConfig.minOpts))
+    .pipe(size({
+      showFiles: true
+    }))
+    .pipe(dest(path.images.dest));
+}
+
+// browserSync task to launch preview server
+function connectToBrowser() {
+  return browserSync.init({
+    reloadDelay: 2000, // reload after 2s, compilation is (hopefully)
+    server: {
+      baseDir: paths.baseDir.src
+    }
+  });
+};
+
+// A simple task to reload the page
+function reload() {
+  browserSync.reload();
+}
+
 /*
  * Function for watching for file changed
  * first option path to folder
@@ -134,7 +145,14 @@ function watchingHtml() {
   watch(paths.html.src).on('change', reload);
 };
 
-task('html:dev', series(cleanDist, parallel(stylesHtml, scripts), watchingHtml));
+task('html:dev', series(cleanDist,
+  parallel(stylesHtml, scripts),
+  watchingHtml));
 task('html:build', series(cleanBuild));
+task('html:images', series(imagesHtml));
 task('mail:dev', series(cleanDist));
 task('mail:build', series(cleanBuild));
+
+//// https: //goede.site/setting-up-gulp-4-for-automatic-sass-compilation-and-css-injection
+
+//// https://www.sitepoint.com/automate-css-tasks-gulp/
