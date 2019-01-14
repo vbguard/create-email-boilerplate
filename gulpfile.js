@@ -22,6 +22,11 @@ const htmlmin = require('gulp-htmlmin');
 const sourcemaps = require("gulp-sourcemaps");
 const babel = require("gulp-babel");
 const minify = require('babel-preset-minify');
+const newer = require('gulp-newer');
+const size = require('gulp-size');
+const imagemin = require('gulp-imagemin');
+const imageminPngquant = require('imagemin-pngquant');
+const imageminJpegRecompress = require('imagemin-jpeg-recompress');
 
 // browserSync base directory
 // this will be the base directory of files for web preview
@@ -32,15 +37,15 @@ const paths = {
     dest: './dist/'
   },
   styles: {
-    src: './src/styles/**/*.scss',
-    dest: './dist/styles/'
+    src: './src/html/styles/**/*.scss',
+    dest: './dist/css/'
   },
   scripts: {
-    src: './src/scripts/**/*.js',
+    src: './src/html/scripts/**/*.js',
     dest: './dist/scripts/'
   },
   images: {
-    src: './src/images/**/*',
+    src: './src/html/images/**/*',
     dest: './dist/images/',
   },
   baseDir: {
@@ -107,18 +112,16 @@ function html() {
 };
 
 function stylesHtml() {
-  return src('./src/styles/**/*.scss')
+  return src(paths.styles.src)
     .pipe(sass({
       outputStyle: 'compressed'
     }).on('error', sass.logError))
-    .pipe(autoprefixer({
-      browsers: '> 0.1%'
-    }))
+    .pipe(autoprefixer(autoprefixConfig))
     .pipe(concat('styles.css'))
     .pipe(cleanCSS({
       level: 2
     }))
-    .pipe(dest('./dist/css/'))
+    .pipe(dest(paths.styles.dest))
     .pipe(browserSync.stream());
 
 }
@@ -145,19 +148,25 @@ function scriptsBabel() {
 /**************** images task ****************/
 
 const imgConfig = {
-  minOpts: {
-    optimizationLevel: 5
-  }
+  minOpts: [
+    imagemin.gifsicle(),
+    imagemin.jpegtran(),
+    imagemin.optipng(),
+    imagemin.svgo(),
+    imageminPngquant(),
+    imageminJpegRecompress(),
+  ]
 };
 
 function imagesHtml() {
-  return src(path.images.src)
-    .pipe(newer(path.images.dest))
+  return src(paths.images.src)
+    .pipe(newer(paths.images.dest))
     .pipe(imagemin(imgConfig.minOpts))
     .pipe(size({
       showFiles: true
     }))
-    .pipe(dest(path.images.dest));
+    .pipe(dest(paths.images.dest))
+    .pipe(browserSync.stream());
 }
 
 // browserSync task to launch preview server
@@ -185,11 +194,12 @@ function watchingHtml() {
   connectToBrowser();
   watch(paths.scripts.src, scriptsBabel).on('change', reload);
   watch(paths.styles.src, stylesHtml);
+  watch(paths.images.src, imagesHtml);
   watch(paths.html.src, html).on('change', reload);
 };
 
 task('html:dev', series(cleanDist,
-  parallel(stylesHtml, scriptsBabel, html),
+  parallel(stylesHtml, scriptsBabel, html, imagesHtml),
   watchingHtml));
 task('html:build', series(cleanBuild));
 task('html:images', series(imagesHtml));
