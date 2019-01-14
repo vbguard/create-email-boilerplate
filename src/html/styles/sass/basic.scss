@@ -1,0 +1,27 @@
+@import '/node_modules/normalize.css/normalize.css';
+@import '/node_modules/cssrecipes-defaults/index.css';
+@import '/node_modules/cssrecipes-reset/index.css';
+
+body {
+  padding: 50px 100px;
+  background-color: #42424250;
+}
+
+code {
+  display: block;
+  border: 1px solid #000;
+  border-radius: 8px;
+  background-color: #fff;
+  width: auto;
+  padding: 10px;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.image-wrapper {
+  width: 100px;
+}
