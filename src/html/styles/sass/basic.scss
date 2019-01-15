@@ -1,20 +1,8 @@
 @import '/node_modules/normalize.css/normalize.css';
 @import '/node_modules/cssrecipes-defaults/index.css';
 @import '/node_modules/cssrecipes-reset/index.css';
-
-body {
-  padding: 50px 100px;
-  background-color: #42424250;
-}
-
-code {
-  display: block;
-  border: 1px solid #000;
-  border-radius: 8px;
-  background-color: #fff;
-  width: auto;
-  padding: 10px;
-}
+@import './colors';
+@import './mixin';
 
 img {
   display: block;
@@ -22,6 +10,24 @@ img {
   height: auto;
 }
 
-.image-wrapper {
-  width: 100px;
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
+
+.container {
+  max-width: 700px;
+  min-width: 700px;
+  margin: 0 auto;
+  padding-left: 56.5px;
+  padding-right: 56.5px;
+}
+
+@import './header.scss';
+@import './body.scss';
+@import './scrollingRow.scss';
+@import './footer.scss';
+// @import '';
+// @import '';
+// @import '';

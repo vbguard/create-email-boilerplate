@@ -1,0 +1,9 @@
+/* Text styles */
+
+@mixin Text-Style {
+  font-family: Calibri;
+  font-size: 7px;
+  font-weight: bold;
+  text-align: left;
+  color: $very-light-blue;
+}

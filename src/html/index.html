@@ -2,50 +2,59 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>MoCart</title>
+  <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body>
-    <h1>Test template</h1>
-    <ol class="list">
-        <li class="list__item">
-            <p>Use Html minify</p>
-        </li>
-        <li class="list__item">
-            <p>Use Sass(scss)</p>
-            <code><a href="https://necolas.github.io/normalize.css/">https://necolas.github.io/normalize.css/</a></code>
-            <code>add
-            </br>
-            <a href="http://cssrecipes.github.io/">http://cssrecipes.github.io/</a></br>
-              /*</br>
-              * box model like it should be</br>
-              *</br>
-              * http://www.paulirish.com/2012/box-sizing-border-box-ftw/</br>
-              */</br>
-             html {box-sizing: border-box}</br>
-            </br>
-             *,</br>
-             *:before,</br>
-             *:after {</br>
-               box-sizing: inherit;</br>
-             }</br></code>
-        </li>
-        <li class="list__item">
-            <p>Use JavaScript</p>
-        </li>
-    </ol>
-
-    <div class="root"></div>
-
-    <div class="image-wrapper">
-      <img src="/images/test.png" alt="It's a test picture">
-    </div>
-    <!-- <script src="scripts/main.min.js"></script> -->
-    <script src="scripts/all.js"></script>
+  <div class="wrapper">
+    <header class="header">
+      <div class="header-contact">
+        <div class="container header-contact__container">
+          <h3 class="header-contact__title">
+            contact & support:
+          </h3>
+          <ul class="header-contact__list">
+            <li class="header-contact__item">
+              <a href="tel:+18001234567" class="header-contact__link header-contact__link--tel">+1800 1234 5678</a>
+            </li>
+            <li class="header-contact__item">
+              <a href="#" class="header-contact__link">contact us</a>
+            </li>
+            <li class="header-contact__item">
+              <a href="#" class="header-contact__link">help</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="header-main">
+        <div class="container header-main__container header-main__logo">
+          <div class="header-main__logo logo">
+            <a href="index.html" class="logo__link">
+              <img src="images/MoCart/logo.png"
+                srcset="images/MoCart/logo@2x.png 2x,
+                        images/MoCart/logo@3x.png 3x"
+                class="logo__image">
+            </a>
+          </div>
+          <div class="container header-main__container header-main__search">
+            <select>
+              <option value="1">1</option>
+              <option value="2">2</option>
+            </select>
+          </div>
+        </div>
+        <div class="container header-main__tabs">
+          <button>shop everything <i></i></button>
+        </div>
+      </div>
+    </header>
+  </div>
+  <!-- <script src="scripts/main.min.js"></script> -->
+  <script src="scripts/all.js"></script>
 </body>
 
 </html>
