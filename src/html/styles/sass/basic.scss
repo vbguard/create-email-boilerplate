@@ -23,7 +23,22 @@ img {
   margin: 0 auto;
   padding-left: 56.5px;
   padding-right: 56.5px;
+}
+
+.br {
   border: 2px solid red;
+}
+
+.bg {
+  border: 2px solid greenyellow;
+}
+
+.bb {
+  border: 2px solid blue;
+}
+
+.bp {
+  border: 2px solid pink;
 }
 
 @import './header.scss';

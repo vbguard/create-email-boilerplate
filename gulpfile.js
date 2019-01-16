@@ -172,6 +172,7 @@ function imagesHtml() {
 // browserSync task to launch preview server
 function connectToBrowser() {
   return browserSync.init({
+    port: 41200,
     reloadDelay: 1000, // reload after 2s, compilation is (hopefully)
     server: {
       baseDir: paths.baseDir.src
