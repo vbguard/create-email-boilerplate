@@ -3,6 +3,7 @@
 @import '/node_modules/cssrecipes-reset/index.css';
 @import './colors';
 @import './mixin';
+@import './fonts';
 
 img {
   display: block;
@@ -22,6 +23,7 @@ img {
   margin: 0 auto;
   padding-left: 56.5px;
   padding-right: 56.5px;
+  border: 2px solid red;
 }
 
 @import './header.scss';
