@@ -70,8 +70,15 @@ const supportedBrowsers = [
 ];
 
 // Config
-const autoprefixConfig = { browsers: supportedBrowsers, cascade: false };
-const babelConfig = { targets: { browsers: supportedBrowsers } };
+const autoprefixConfig = {
+  browsers: supportedBrowsers,
+  cascade: false
+};
+const babelConfig = {
+  targets: {
+    browsers: supportedBrowsers
+  }
+};
 
 // build complete HTML email template
 // compile sass (compileSass task) before running build
@@ -107,8 +114,10 @@ function cleanBuild() {
 
 function html() {
   return src(paths.html.src)
-  .pipe(htmlmin({ collapseWhitespace: true }))
-  .pipe(dest(paths.html.dest))
+    .pipe(htmlmin({
+      collapseWhitespace: true
+    }))
+    .pipe(dest(paths.html.dest))
 };
 
 function stylesHtml() {
@@ -137,10 +146,10 @@ function scripts() {
 
 function scriptsBabel() {
   return src(paths.scripts.src)
-  .pipe(sourcemaps.init())
+    .pipe(sourcemaps.init())
     .pipe(babel({
-			presets: ['@babel/env', minify]
-		}))
+      presets: ['@babel/env', minify]
+    }))
     .pipe(concat("all.js"))
     .pipe(sourcemaps.write("."))
     .pipe(dest(paths.scripts.dest));
