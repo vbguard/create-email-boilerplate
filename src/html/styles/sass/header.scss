@@ -292,6 +292,8 @@
 .tabs {
   &__select {
     &--btn {
+      border: none;
+      outline: none;
       width: 100px;
       height: 18px;
       border-radius: 2.5px;
@@ -305,6 +307,8 @@
       letter-spacing: 0.4px;
       text-align: left;
       color: $white;
+      appearance: none;
+      appearance: 
     }
   }
 }
