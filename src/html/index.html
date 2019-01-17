@@ -3,13 +3,19 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible"
+        content="ie=edge">
   <title>MoCart</title>
   <link href="https://fonts.googleapis.com/css?family=Dancing+Script:700|Lato:400,700|Nanum+Gothic:700,800|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"
-    rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-  <link rel="stylesheet" href="/css/styles.css">
+        rel="stylesheet">
+  <link rel="stylesheet"
+        href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+        crossorigin="anonymous">
+  <link rel="stylesheet"
+        href="/css/styles.css">
 </head>
 
 <body>
@@ -23,12 +29,16 @@
             </h3>
             <ul class="top__list">
               <li class="top__item">
-                <a href="tel:+18001234567" class="top__link top__link--tel">+1800 1234 5678</a>
+                <a href="tel:+18001234567"
+                   class="top__link top__link--tel">+1800 1234 5678</a>
               </li>
               <li class="top__item">
-                <a href="#" class="top__link">contact us</a>
+                <a href="#"
+                   class="top__link">contact us</a>
+              </li>
               <li class="top__item">
-                <a href="#" class="top__link">help</a>
+                <a href="#"
+                   class="top__link">help</a>
               </li>
             </ul>
           </div>
@@ -38,33 +48,93 @@
         <div class="container">
           <div class="main__wrap">
             <div class="main__logo logo">
-              <a href="index.html" class="logo__link">
-                <img src="images/MoCart/logo.png" srcset="images/MoCart/logo@2x.png 2x,
+              <a href="index.html"
+                 class="logo__link">
+                <img src="images/MoCart/logo.png"
+                     srcset="images/MoCart/logo@2x.png 2x,
                               images/MoCart/logo@3x.png 3x"
-                  class="logo__image">
+                     class="logo__image">
               </a>
             </div>
             <div class="main__search search">
               <select class="search__select">
-                <option value="">All Categories</option>
+                <option value="all">All Categories</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
               </select>
-              <input type="search" name="search" id="main-search" placeholder="Search entire store here...">
-              <button type="button" class="search__button"><span><i class="fas fa-search">    </i></span></button>
+              <input type="search"
+                     name="search"
+                     class="search__input"
+                     id="main-search"
+                     placeholder="Search entire store here...">
+              <button type="button"
+                      class="search__button"><i class="fas fa-search"
+                   aria-hidden="true"></i></button>
             </div>
-            <div class="main__user"></div>
+            <div class="main__user user">
+              <ul class="user__list">
+                <li class="user__item">
+                  <button type="button"
+                          name="user-account"
+                          class="user__button">
+                    <i class="fas fa-user"
+                       aria-hidden="true"></i>
+                    <span class="user__button--text">my account</span>
+                  </button>
+                </li>
+                <li class="user__item">
+                  <button type="button"
+                          name="user-track"
+                          class="user__button">
+                    <i class="fas fa-map-marker-alt"
+                       aria-hidden="true"></i>
+                    <span class="user__button--text">track order</span>
+                  </button>
+                </li>
+                <li class="user__item">
+                  <button type="button"
+                          name="user-auth"
+                          class="user__button">
+                    <i class="fas fa-lock"
+                       aria-hidden="false"></i>
+                    <span class="user__button--text">login</span>
+                  </button>
+                </li>
+                <li class="user__item">
+                  <button type="button"
+                          name="user-cart"
+                          class="user__button cart js-cart">
+                    <span class="user__button--wrap">
+                      <i class="fas fa-cart-arrow-down"></i>
+                      <span class="user__button--counter">20</span>
+                      <i class="fas fa-chevron-down"></i>
+                    </span>
+                  </button>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-      <div class="header__tabs">
+      <div class="header__tabs tabs">
         <div class="container">
-          <div class="header-main__tabs">
-            <button>shop everything <i></i></button>
+          <div class="tabs__select">
+            <select class="tabs__select--btn">
+              <option>shop everything <i class="fas fa-chevron-down"
+                   aria-hidden="false"></i></option>
+            </select>
           </div>
+          <nav class="tabs__nav nav">
+            <ul class="nav__list">
+              <li class="nav__item"></li>
+              <li class="nav__item"></li>
+              <li class="nav__item"></li>
+              <li class="nav__item"></li>
+            </ul>
+          </nav>
         </div>
       </div>
-      <div class="header__banner bg"></div>
+      <div class="header__banner bg">SUPER BANNER</div>
     </header>
   </div>
   <!-- <script src="scripts/main.min.js"></script> -->

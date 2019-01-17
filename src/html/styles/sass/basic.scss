@@ -1,6 +1,7 @@
 @import '/node_modules/normalize.css/normalize.css';
 @import '/node_modules/cssrecipes-defaults/index.css';
 @import '/node_modules/cssrecipes-reset/index.css';
+@import './reset';
 @import './colors';
 @import './mixin';
 @import './fonts';
@@ -18,8 +19,8 @@ img {
 }
 
 .container {
-  max-width: 700px;
-  min-width: 700px;
+  max-width: 1024px;
+  min-width: 1024px;
   margin: 0 auto;
   padding-left: 56.5px;
   padding-right: 56.5px;
