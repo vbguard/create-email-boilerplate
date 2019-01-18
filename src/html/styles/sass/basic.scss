@@ -1,8 +1,8 @@
 @import '/node_modules/normalize.css/normalize.css';
 @import '/node_modules/cssrecipes-defaults/index.css';
 @import '/node_modules/cssrecipes-reset/index.css';
-@import './reset';
 @import './colors';
+@import './reset';
 @import './mixin';
 @import './fonts';
 
@@ -27,6 +27,16 @@ img {
   z-index: 1;
 }
 
+.section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:not(:last-child) {
+    margin-bottom: 26px;
+  }
+}
+
 .br {
   border: 2px solid red;
 }
@@ -44,7 +54,7 @@ img {
 }
 
 @import './header.scss';
-@import './body.scss';
+@import './main.scss';
 @import './scrollingRow.scss';
 @import './footer.scss';
 // @import '';
