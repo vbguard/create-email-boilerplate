@@ -29,8 +29,6 @@ img {
 
 .section {
   display: flex;
-  justify-content: center;
-  align-items: center;
 
   &:not(:last-child) {
     margin-bottom: 26px;

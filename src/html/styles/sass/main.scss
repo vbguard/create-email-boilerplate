@@ -1,5 +1,6 @@
 .main {
   padding: 20px 0;
+  background-color: #e0e0e0;
 }
 
 .section {
@@ -50,7 +51,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 20px 20px 0 20px;
 
   &__image {
     width: 140px;
@@ -117,6 +118,9 @@
   flex: 0 0 30%;
   padding-top: 16px;
   padding-bottom: 28px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: $white;
 
   &__title {
     margin: 0;
@@ -134,8 +138,9 @@
 
   &__caption {
     margin: 0;
+    margin-bottom: 2px;
     font-family: $roboto;
-    font-size: 6px;
+    font-size: 10px;
     font-weight: bold;
     font-style: normal;
     font-stretch: normal;
@@ -239,9 +244,11 @@
 
 .quick-link {
   width: 100%;
+  padding: 18px 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: $white;
 
   &__title {
     margin: 0;
@@ -296,7 +303,7 @@
   }
 
   &__link {
-    padding-right: 5px;
+    padding-right: 3px;
     font-family: $roboto;
     font-size: 14px;
     font-weight: normal;
@@ -426,6 +433,7 @@
   &-slider {
     position: relative;
     width: 100%;
+    background-color: $white;
 
     &__btn {
       &--left {
@@ -454,6 +462,11 @@
 
   &__item {
     flex-basis: calc(100% / 5 - 40px);
+    border-bottom: 5px solid transparent;
+
+    &:hover {
+      border-bottom: 5px solid $dark-sky-blue;
+    }
   }
 }
 
@@ -461,6 +474,7 @@
   &-slider {
     position: relative;
     width: 100%;
+    background-color: $white;
 
     &__btn {
       &--left {
@@ -489,6 +503,11 @@
 
   &__item {
     flex-basis: calc(100% / 5 - 40px);
+    border-bottom: 5px solid transparent;
+
+    &:hover {
+      border-bottom: 5px solid $dark-sky-blue;
+    }
   }
 }
 
@@ -496,6 +515,7 @@
   &-slider {
     position: relative;
     width: 100%;
+    background-color: $white;
 
     &__btn {
       &--left {
@@ -524,5 +544,10 @@
 
   &__item {
     flex-basis: calc(100% / 5 - 40px);
+    border-bottom: 5px solid transparent;
+
+    &:hover {
+      border-bottom: 5px solid $dark-sky-blue;
+    }
   }
 }

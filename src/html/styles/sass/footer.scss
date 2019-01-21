@@ -255,6 +255,10 @@
 }
 
 .freepsd {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   &__title {
     margin: 0;
     margin-right: 8px;
@@ -263,7 +267,7 @@
     font-weight: normal;
     font-style: normal;
     font-stretch: normal;
-    line-height: normal;
+    line-height: 30px;
     letter-spacing: 0.1px;
     text-align: left;
     color: $white;
@@ -271,6 +275,8 @@
 
   &__link {
     display: flex;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
     font-family: 'Myriad Pro', sans-serif;
     font-size: 10px;
@@ -285,5 +291,7 @@
 
   &__image {
     margin-right: 4px;
+    width: 30px;
+    height: 30px;
   }
 }
