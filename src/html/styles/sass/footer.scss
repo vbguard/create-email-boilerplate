@@ -11,6 +11,7 @@
 
     & .banner__text .banner__subtitle {
       color: $white;
+      font-weight: 300;
     }
 
     & .banner__icon {
@@ -21,6 +22,10 @@
   &__all {
     background-color: $charcoal-grey;
   }
+
+  &__bottom {
+    background-color: $dark;
+  }
 }
 
 .all {
@@ -28,6 +33,7 @@
   padding: 40px 0;
 
   &__list {
+    flex: 0 0 60%;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -38,6 +44,12 @@
     &:not(:last-child) {
       margin-right: 10px;
     }
+  }
+
+  &__social {
+    flex: 0 0 40%;
+    display: flex;
+    flex-direction: column;
   }
 }
 
@@ -60,7 +72,7 @@
     margin: 0;
     font-family: $roboto;
     font-size: 8px;
-    font-weight: normal;
+    font-weight: 300;
     font-style: normal;
     font-stretch: normal;
     line-height: 2.14;
@@ -77,5 +89,201 @@
     & .fa-li {
       color: $dark-sky-blue;
     }
+  }
+}
+
+.social {
+  padding-left: 20px;
+
+  &__title {
+    margin: 0;
+    margin-right: 12px;
+    font-family: $roboto;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 2.5;
+    letter-spacing: -0.3px;
+    text-align: left;
+    color: $white;
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+
+  &__item {
+    &:not(:last-child) {
+      margin-right: 18px;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.42;
+    letter-spacing: 0.3px;
+    text-align: justify;
+    color: $white;
+  }
+}
+
+.subscribe {
+  &__title {
+    margin: 0;
+    margin-bottom: 12px;
+    font-family: $roboto;
+    font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 0.1px;
+    text-align: left;
+    color: $white;
+  }
+
+  &__text {
+    margin: 0;
+    margin-bottom: 10px;
+    font-family: $roboto;
+    font-size: 12px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 0.1px;
+    text-align: left;
+    color: $white;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+  }
+
+  &__input {
+    display: inline-block;
+    height: 40px;
+    width: 88%;
+    padding: 10px 12px;
+    background-color: transparent;
+    border: 1px solid $brown-grey;
+    font-family: $roboto;
+    font-weight: normal;
+    font-size: 14px;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 2.52;
+    letter-spacing: -0.2px;
+    text-align: left;
+    color: $white;
+
+    &::placeholder {
+      font-size: 10px;
+    }
+  }
+
+  &__btn {
+    width: 12%;
+    height: 40px;
+    border: none;
+    outline: none;
+    background-color: $dark-sky-blue;
+  }
+}
+
+.bottom {
+  &__wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+  }
+
+  &__freepsd {
+    display: flex;
+  }
+}
+
+.credit-card {
+  &__list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: $white;
+    font-size: 24px;
+  }
+}
+
+.copy {
+  &__title {
+    margin: 0;
+    font-family: 'Myriad Pro', sans-serif;
+    font-size: 10px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 0.1px;
+    text-align: left;
+    color: $white;
+  }
+}
+
+.freepsd {
+  &__title {
+    margin: 0;
+    margin-right: 8px;
+    font-family: 'Myriad Pro', sans-serif;
+    font-size: 10px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 0.1px;
+    text-align: left;
+    color: $white;
+  }
+
+  &__link {
+    display: flex;
+    text-decoration: none;
+    font-family: 'Myriad Pro', sans-serif;
+    font-size: 10px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 0.1px;
+    text-align: left;
+    color: $white;
+  }
+
+  &__image {
+    margin-right: 4px;
   }
 }
